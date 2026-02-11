@@ -38,16 +38,15 @@ exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store']
 language = 'id'
 
 # -- Options for HTML output -------------------------------------------------
-html_theme = 'furo'
+html_theme = 'shibuya'
 html_static_path = ['_static']
 html_title = 'Basic Python UDN'
 html_css_files = ['custom.css']
 
-# Furo: modern layout, better proportions, light/dark
+# Shibuya theme options (see https://shibuya.lepture.com/customisation/)
 html_theme_options = {
-    "sidebar_hide_name": True,
-    "navigation_with_keys": True,
-    "source_repository": None,
+    "accent_color": "blue",
+    "page_layout": "default",
 }
 
 # -- Intersphinx configuration -----------------------------------------------
