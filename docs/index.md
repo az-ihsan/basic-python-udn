@@ -40,6 +40,13 @@ pytorch/index
 ```
 
 ```{toctree}
+:maxdepth: 2
+:caption: Natural Language Processing
+
+nlp/index
+```
+
+```{toctree}
 :maxdepth: 1
 :caption: Referensi
 

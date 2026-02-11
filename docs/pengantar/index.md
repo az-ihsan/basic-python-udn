@@ -11,6 +11,7 @@ Setelah menyelesaikan materi ini, mahasiswa diharapkan mampu:
 3. **Menggunakan Pandas** - analisis dan manipulasi data tabular
 4. **Memahami dasar Machine Learning** - alur kerja ML dengan scikit-learn
 5. **Memahami dasar Deep Learning** - tensor, autograd, dan neural network dengan PyTorch
+6. **Memahami dasar NLP** - tokenisasi, POS tagging, dan NER dengan spaCy
 
 ## Prasyarat
 
@@ -51,6 +52,10 @@ Berikut adalah urutan pembelajaran yang disarankan:
        ▼
 ┌─────────────┐
 │   PyTorch   │ ← Deep Learning dasar
+└──────┬──────┘
+       ▼
+┌─────────────┐
+│    NLP      │ ← Natural Language Processing dengan spaCy
 └─────────────┘
 ```
 
