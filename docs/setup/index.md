@@ -103,14 +103,30 @@ uv sync
 Untuk mengikuti materi ini, instal pustaka-pustaka berikut:
 
 ```bash
-pip install numpy pandas scikit-learn torch matplotlib jupyter
+pip install numpy pandas scikit-learn torch matplotlib jupyter spacy transformers
 ```
 
 Atau jika menggunakan uv:
 
 ```bash
-uv add numpy pandas scikit-learn torch matplotlib jupyter
+uv add numpy pandas scikit-learn torch matplotlib jupyter spacy transformers
 ```
+
+### Model spaCy
+
+Untuk menggunakan spaCy, Anda perlu mengunduh model bahasa:
+
+```bash
+# Model Bahasa Inggris
+python -m spacy download en_core_web_sm
+
+# Model Bahasa Indonesia
+python -m spacy download id_core_news_sm
+```
+
+### Model Transformers
+
+Model Hugging Face Transformers akan diunduh secara otomatis saat pertama kali digunakan dan disimpan di cache lokal (`~/.cache/huggingface/`). Tidak perlu mengunduh model secara manual.
 
 ## Editor/IDE yang Disarankan
 

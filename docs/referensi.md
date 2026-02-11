@@ -34,6 +34,20 @@ Halaman ini berisi daftar sumber dan dokumentasi resmi untuk pustaka-pustaka yan
 - [PyTorch Tutorials](https://pytorch.org/tutorials/) - Tutorial resmi
 - [PyTorch Recipes](https://pytorch.org/tutorials/recipes/recipes_index.html) - Resep-resep kode
 
+### spaCy
+
+- [Dokumentasi spaCy](https://spacy.io/usage) - Dokumentasi resmi spaCy
+- [spaCy 101](https://spacy.io/usage/spacy-101) - Pengenalan konsep dasar
+- [Model Bahasa](https://spacy.io/models) - Daftar model bahasa yang tersedia
+- [API Reference](https://spacy.io/api) - Referensi API lengkap
+
+### Hugging Face Transformers
+
+- [Dokumentasi Transformers](https://huggingface.co/docs/transformers) - Dokumentasi resmi
+- [Pipeline Tutorial](https://huggingface.co/docs/transformers/pipeline_tutorial) - Tutorial penggunaan pipeline
+- [Model Hub](https://huggingface.co/models) - Ribuan model pre-trained
+- [Tasks Overview](https://huggingface.co/tasks) - Daftar tugas NLP yang didukung
+
 ## Buku yang Disarankan
 
 ### Python
@@ -108,6 +122,20 @@ Halaman ini berisi daftar sumber dan dokumentasi resmi untuk pustaka-pustaka yan
 - {py:class}`torch.nn.Module` - Base class untuk neural networks
 - {py:class}`torch.optim.Adam` - Adam optimizer
 - {py:func}`torch.tensor` - Membuat tensor
+
+### spaCy
+
+- {py:mod}`spacy` - spaCy API
+- {py:class}`spacy.tokens.Doc` - Dokumen hasil pemrosesan
+- {py:class}`spacy.tokens.Token` - Token individual
+- {py:class}`spacy.tokens.Span` - Span (potongan dokumen)
+
+### Hugging Face Transformers
+
+- {py:mod}`transformers` - Transformers API
+- {py:func}`transformers.pipeline` - Pipeline untuk berbagai tugas NLP
+- {py:class}`transformers.AutoTokenizer` - Tokenizer otomatis
+- {py:class}`transformers.AutoModel` - Model otomatis
 
 ## Tips Belajar
 
