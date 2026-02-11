@@ -2,6 +2,8 @@
 
 **Sebagai bahan pembantu pembelajaran Kecerdasan Buatan Universitas Darunnajah (UDN)**
 
+📖 **Dokumentasi (online):** [https://az-ihsan.github.io/basic-python-udn/](https://az-ihsan.github.io/basic-python-udn/)
+
 Repositori ini berisi materi pembelajaran Basic Python UDN, mencakup:
 
 - Dasar-dasar Python
