@@ -35,7 +35,7 @@ jobs:
       - name: Create venv and install docs deps only
         run: |
           uv venv
-          uv pip install --python .venv/bin/python sphinx myst-parser sphinx-rtd-theme
+          uv pip install --python .venv/bin/python sphinx myst-parser furo
 
       - name: Build Sphinx docs
         run: .venv/bin/sphinx-build -b html docs docs/_build/html

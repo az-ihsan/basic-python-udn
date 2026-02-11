@@ -1,4 +1,4 @@
-# Setup Lingkungan
+# Setup Environment
 
 Sebelum mulai belajar Python, kita perlu menyiapkan lingkungan pengembangan. Bagian ini akan memandu Anda untuk menginstal Python dan alat-alat pendukung lainnya.
 
@@ -135,12 +135,6 @@ jupyter notebook
 ```
 
 Browser akan terbuka dengan antarmuka Jupyter.
-
-### PyCharm
-
-- IDE lengkap untuk Python
-- Versi Community gratis
-- Unduh di [jetbrains.com/pycharm](https://www.jetbrains.com/pycharm/)
 
 ## Struktur Folder Proyek
 

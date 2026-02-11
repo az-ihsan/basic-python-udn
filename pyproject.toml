@@ -20,7 +20,7 @@ dependencies = [
 docs = [
     "sphinx",
     "myst-parser",
-    "sphinx-rtd-theme",
+    "furo",
 ]
 dev = [
     "pytest",
@@ -39,7 +39,7 @@ only-include = ["main.py"]
 dev-dependencies = [
     "sphinx",
     "myst-parser",
-    "sphinx-rtd-theme",
+    "furo",
     "pytest",
     "ruff",
 ]

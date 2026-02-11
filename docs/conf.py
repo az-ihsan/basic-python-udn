@@ -38,9 +38,17 @@ exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store']
 language = 'id'
 
 # -- Options for HTML output -------------------------------------------------
-html_theme = 'sphinx_rtd_theme'
+html_theme = 'furo'
 html_static_path = ['_static']
 html_title = 'Basic Python UDN'
+html_css_files = ['custom.css']
+
+# Furo: modern layout, better proportions, light/dark
+html_theme_options = {
+    "sidebar_hide_name": True,
+    "navigation_with_keys": True,
+    "source_repository": None,
+}
 
 # -- Intersphinx configuration -----------------------------------------------
 intersphinx_mapping = {

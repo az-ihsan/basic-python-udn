@@ -1,0 +1,4 @@
+/* Better proportions: wider content area, less empty space */
+:root {
+  --content-max-width: 60rem;
+}
