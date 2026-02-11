@@ -157,4 +157,4 @@ Jika Anda menemukan kesalahan atau ingin berkontribusi, silakan buat issue atau 
 
 ## Lisensi
 
-Materi ini tersedia untuk keperluan pendidikan.
+MIT License 
