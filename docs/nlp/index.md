@@ -33,15 +33,6 @@ Pustaka yang menyediakan akses ke model-model state-of-the-art. Cocok untuk:
 - Menggunakan model pre-trained canggih (BERT, GPT, dll)
 - Eksperimen dan penelitian
 
-## Daftar Materi
-
-```{toctree}
-:maxdepth: 2
-
-spacy/index
-transformers/index
-```
-
 ## Alur Pembelajaran
 
 ```
@@ -60,4 +51,4 @@ transformers/index
 
 ## Langkah Selanjutnya
 
-Mulai dengan [spaCy](spacy/index.md) untuk mempelajari dasar-dasar NLP dengan pustaka yang cepat dan efisien, atau langsung ke [Transformers](transformers/index.md) jika Anda ingin menggunakan model-model canggih.
+Mulai dengan [spaCy](../spacy/index.md) untuk mempelajari dasar-dasar NLP dengan pustaka yang cepat dan efisien, atau langsung ke [Transformers](../transformers/index.md) jika Anda ingin menggunakan model-model canggih.

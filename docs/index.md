@@ -21,12 +21,6 @@ setup/index
 :caption: Dasar Python
 
 python/index
-```
-
-```{toctree}
-:maxdepth: 2
-:caption: Pustaka Ilmiah
-
 numpy/index
 pandas/index
 ```
@@ -35,6 +29,7 @@ pandas/index
 :maxdepth: 2
 :caption: Machine Learning & Deep Learning
 
+ml_dl/index
 scikit_learn/index
 pytorch/index
 ```
@@ -44,6 +39,15 @@ pytorch/index
 :caption: Natural Language Processing
 
 nlp/index
+spacy/index
+transformers/index
+```
+
+```{toctree}
+:maxdepth: 2
+:caption: Visualisasi Data
+
+matplotlib/index
 ```
 
 ```{toctree}
