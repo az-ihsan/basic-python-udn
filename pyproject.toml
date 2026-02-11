@@ -1,0 +1,45 @@
+[project]
+name = "basic-python-udn"
+version = "0.1.0"
+description = "Basic Python UDN - Materi pembelajaran Kecerdasan Buatan Universitas Darunnajah"
+readme = "README.md"
+requires-python = ">=3.10"
+authors = [
+    { name = "Dr. -Ing. Ahmad Z. Ihsan" }
+]
+dependencies = [
+    "numpy",
+    "pandas",
+    "scikit-learn",
+    "torch",
+    "matplotlib",
+    "jupyter",
+]
+
+[project.optional-dependencies]
+docs = [
+    "sphinx",
+    "myst-parser",
+    "sphinx-rtd-theme",
+]
+dev = [
+    "pytest",
+    "ruff",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["."]
+only-include = ["main.py"]
+
+[tool.uv]
+dev-dependencies = [
+    "sphinx",
+    "myst-parser",
+    "sphinx-rtd-theme",
+    "pytest",
+    "ruff",
+]
