@@ -168,6 +168,33 @@ proyek-python/
 └── README.md           # Dokumentasi proyek
 ```
 
+## Google Colab
+Google Colab (Colaboratory) adalah lingkungan Jupyter Notebook berbasis cloud yang memungkinkan kita menjalankan Python langsung di browser tanpa instalasi. Biasanya, library populer di Google Colab sudah tersedia, tetapi jika perlu instal, jalankan:
+
+```
+!pip install pandas numpy matplotlib seaborn
+```
+
+### Import Dataset di Google Colab
+Terdapat beberapa cara umum untuk melakukan import dataset untuk digunakan di Google Colab.
+1. Upload dari komputer lokal
+
+    Navigasi ke menu Files, upload dataset, copy path dataset yang telah diupload. Load dataset dengan:
+```
+df = pd.read_csv('path/to/dataset')
+```
+2. Import dari Google Drive
+```
+from google.colab import drive
+drive.mount('/content/drive')
+df = pd.read_csv("/content/drive/MyDrive/folder/nama_file.csv")
+```
+3. Import dari Link URL
+```
+url = "https://example.com/data.csv"
+df = pd.read_csv(url)
+```
+
 ## Langkah Selanjutnya
 
 Setelah lingkungan siap, lanjutkan ke bagian [Dasar Python](../python/index.md) untuk mulai belajar pemrograman Python.
