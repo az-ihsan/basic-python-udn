@@ -1,6 +1,15 @@
 # Modul dan Paket
 
-Modul dan paket memungkinkan kita mengorganisir kode Python menjadi unit-unit yang terpisah dan dapat digunakan kembali.
+Modul dan paket memungkinkan kita mengatur kode Python menjadi unit terpisah yang dapat digunakan ulang.
+
+## Tujuan Pembelajaran
+
+Setelah mempelajari bab ini, Anda diharapkan mampu:
+
+- Menjelaskan perbedaan modul dan paket
+- Menggunakan beberapa gaya `import` dengan tepat
+- Memanfaatkan modul standar Python untuk tugas umum
+- Mengelola dependensi proyek dengan `pip` dan virtual environment
 
 ## Modul
 
@@ -27,19 +36,19 @@ def luas_persegi(sisi):
 ### Menggunakan Modul
 
 ```python
-# Cara 1: Import seluruh modul
+# Cara 1: Import seluruh modul (paling aman untuk pemula)
 import matematika
 
 print(matematika.PI)
 print(matematika.luas_lingkaran(5))
 
-# Cara 2: Import fungsi spesifik
+# Cara 2: Import objek spesifik
 from matematika import luas_lingkaran, PI
 
 print(PI)
 print(luas_lingkaran(5))
 
-# Cara 3: Import semua (tidak disarankan)
+# Cara 3: Import semua (hindari)
 from matematika import *
 
 # Cara 4: Import dengan alias
@@ -47,6 +56,10 @@ import matematika as mat
 
 print(mat.luas_persegi(4))
 ```
+
+:::{warning}
+Hindari `from modul import *` karena dapat mengotori namespace dan menimbulkan bentrokan nama yang sulit dilacak.
+:::
 
 ## Modul Standar Python
 
@@ -71,22 +84,22 @@ print(math.floor(4.8)) # 4
 ```python
 import random
 
-# Random float antara 0 dan 1
+# Bilangan pecahan acak antara 0 dan 1
 print(random.random())
 
-# Random integer dalam range
+# Bilangan bulat acak dalam rentang [1, 10]
 print(random.randint(1, 10))
 
-# Pilih elemen random dari list
+# Pilih elemen acak dari list
 buah = ["apel", "jeruk", "mangga"]
 print(random.choice(buah))
 
-# Acak urutan list
+# Acak urutan list (in-place)
 angka = [1, 2, 3, 4, 5]
 random.shuffle(angka)
 print(angka)
 
-# Random sample
+# Ambil sampel unik sebanyak 5 elemen
 print(random.sample(range(100), 5))
 ```
 
@@ -135,16 +148,16 @@ print(os.listdir("."))
 print(os.path.exists("file.txt"))
 
 # Mendapatkan nama file dan direktori
-path = "/home/user/dokumen/file.txt"
-print(os.path.basename(path))  # file.txt
-print(os.path.dirname(path))   # /home/user/dokumen
+path = os.path.join("home", "user", "dokumen", "file.txt")
+print(os.path.basename(path))  # nama berkas
+print(os.path.dirname(path))   # direktori induk
 
 # Menggabungkan path
 full_path = os.path.join("folder", "subfolder", "file.txt")
 print(full_path)
 ```
 
-### pathlib (Modern Path Handling)
+### pathlib (Penanganan Path Modern)
 
 ```python
 from pathlib import Path
@@ -229,7 +242,9 @@ Untuk materi lengkap tentang permutasi, kombinasi, faktorial, Cartesian product,
 
 ## Paket
 
-Paket adalah direktori yang berisi modul-modul Python dan file `__init__.py`.
+Paket adalah direktori yang berisi modul-modul Python.
+
+Dalam praktik modern, paket bisa berupa **namespace package** (tanpa `__init__.py`). Namun, untuk pembelajaran dasar, tetap disarankan memakai `__init__.py` agar struktur paket eksplisit dan mudah dipahami.
 
 ### Struktur Paket
 
@@ -295,19 +310,19 @@ print(fungsi_c())
 
 ```bash
 # Instal paket
-pip install numpy
+python -m pip install numpy
 
 # Instal versi spesifik
-pip install numpy==1.24.0
+python -m pip install numpy==1.24.0
 
 # Instal dari requirements.txt
-pip install -r requirements.txt
+python -m pip install -r requirements.txt
 
 # Lihat paket terinstal
-pip list
+python -m pip list
 
-# Uninstall
-pip uninstall numpy
+# Copot paket
+python -m pip uninstall numpy
 ```
 
 ### requirements.txt
@@ -325,19 +340,23 @@ torch>=2.0.0
 ### Membuat Virtual Environment
 
 ```bash
-# Buat venv
-python -m venv venv
+# Buat virtual environment
+python -m venv .venv
 
 # Aktivasi
-source venv/bin/activate  # Linux/macOS
-venv\Scripts\activate     # Windows
+source .venv/bin/activate  # Linux/macOS
+.\.venv\Scripts\activate   # Windows (PowerShell)
 
 # Instal dependensi
-pip install -r requirements.txt
+python -m pip install -r requirements.txt
 
-# Export dependensi
-pip freeze > requirements.txt
+# Ekspor dependensi terpasang
+python -m pip freeze > requirements.txt
 ```
+
+:::{note}
+`pip freeze` cocok untuk mengunci dependensi lingkungan proyek saat ini. Untuk modul ajar atau pustaka, gunakan pin versi secara sadar (tidak selalu semua paket perlu dibekukan).
+:::
 
 ## if __name__ == "__main__"
 
@@ -357,7 +376,7 @@ if __name__ == "__main__":
 ```
 
 - Jika dijalankan langsung: `python utils.py` → main() dieksekusi
-- Jika diimport: `import utils` → main() TIDAK dieksekusi
+- Jika diimpor: `import utils` → `main()` tidak dieksekusi
 
 ## Latihan
 

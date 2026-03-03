@@ -1,10 +1,10 @@
 # Hugging Face Transformers
 
-[Hugging Face Transformers](https://huggingface.co/transformers/) adalah pustaka yang menyediakan akses mudah ke ribuan model pre-trained untuk Natural Language Processing. Dengan Transformers, Anda dapat melakukan berbagai tugas NLP hanya dengan beberapa baris kode.
+[Hugging Face Transformers](https://huggingface.co/transformers/) adalah pustaka yang menyediakan akses mudah ke ribuan model pre-trained untuk Natural Language Processing (NLP). Dengan Transformers, Anda dapat menjalankan berbagai tugas NLP hanya dengan beberapa baris kode.
 
 ## Mengapa Transformers?
 
-- **State-of-the-art** - Model terbaik untuk berbagai tugas NLP
+- **Mutakhir (state-of-the-art)** - Model terbaik untuk berbagai tugas NLP
 - **Pre-trained** - Model sudah dilatih pada data besar, tinggal pakai
 - **Mudah digunakan** - API `pipeline` yang sangat sederhana
 - **Model Hub** - Ribuan model dari komunitas global
@@ -13,17 +13,17 @@
 ## Instalasi
 
 ```bash
-pip install transformers
+python -m pip install "transformers[torch]"
 ```
 
 Atau jika menggunakan uv:
 
 ```bash
-uv add transformers
+uv add transformers torch
 ```
 
 :::{note}
-Model akan diunduh secara otomatis saat pertama kali digunakan dan disimpan di cache lokal (`~/.cache/huggingface/`).
+Contoh di materi ini menggunakan backend PyTorch. Model diunduh otomatis saat pertama digunakan dan disimpan di cache lokal (`~/.cache/huggingface/`).
 :::
 
 ## Daftar Materi
@@ -40,7 +40,10 @@ dasar
 from transformers import pipeline
 
 # Buat pipeline untuk analisis sentimen
-classifier = pipeline("sentiment-analysis")
+classifier = pipeline(
+    "sentiment-analysis",
+    model="distilbert-base-uncased-finetuned-sst-2-english",
+)
 
 # Gunakan pipeline
 result = classifier("I love learning about AI!")
@@ -75,7 +78,7 @@ California           → LOC
 | Aspek | spaCy | Transformers |
 |-------|-------|--------------|
 | Kecepatan | Sangat cepat | Lebih lambat |
-| Akurasi | Baik | State-of-the-art |
+| Akurasi | Baik | Mutakhir (state-of-the-art) |
 | Ukuran model | Kecil (MB) | Besar (100MB-GB) |
 | GPU | Opsional | Disarankan |
 | Kasus penggunaan | Produksi, real-time | Akurasi maksimal |

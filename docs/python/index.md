@@ -1,11 +1,11 @@
 # Dasar Python
 
-Python adalah bahasa pemrograman tingkat tinggi yang mudah dipelajari dan sangat populer di bidang Data Science dan Kecerdasan Buatan. Bagian ini akan membahas dasar-dasar pemrograman Python.
+Python adalah bahasa pemrograman tingkat tinggi yang mudah dipelajari dan sangat populer di bidang ilmu data dan kecerdasan buatan. Bagian ini membahas dasar-dasar pemrograman Python.
 
 ## Mengapa Python?
 
 - **Mudah dipelajari** - Sintaks yang bersih dan mudah dibaca
-- **Versatile** - Dapat digunakan untuk berbagai keperluan
+- **Serbaguna** - Dapat digunakan untuk berbagai keperluan
 - **Ekosistem yang kaya** - Banyak pustaka untuk komputasi ilmiah
 - **Komunitas besar** - Banyak sumber belajar dan dukungan
 
@@ -22,7 +22,7 @@ Halo, Dunia!
 5
 ```
 
-### Menjalankan File Script
+### Menjalankan Berkas Skrip
 
 Simpan kode dalam file `.py` dan jalankan:
 
@@ -58,19 +58,27 @@ Output:
 Halo, Dunia!
 ```
 
-## Komentar
+```{doctest}
+>>> print("Halo, Dunia!")
+Halo, Dunia!
+```
 
-Komentar digunakan untuk menjelaskan kode dan tidak dieksekusi:
+## Komentar dan Docstring
+
+Komentar digunakan untuk menjelaskan kode dan tidak dieksekusi. Dalam Python, komentar ditulis dengan `#`.
+
+Docstring berbeda dari komentar. Docstring adalah string literal yang menjadi dokumentasi objek (modul, fungsi, kelas) jika diletakkan sebagai pernyataan pertama.
 
 ```python
 # Ini adalah komentar satu baris
-
-"""
-Ini adalah komentar
-multi-baris (docstring)
-"""
+# Ini adalah komentar multi-baris
+# yang ditulis dengan beberapa tanda pagar.
 
 x = 5  # Komentar di akhir baris
+
+def luas_lingkaran(r):
+    """Menghitung luas lingkaran berdasarkan jari-jari."""
+    return 3.14159 * r ** 2
 ```
 
 ## Variabel
@@ -93,7 +101,7 @@ print(umur)   # 25
 - Dimulai dengan huruf atau underscore (`_`)
 - Tidak boleh dimulai dengan angka
 - Hanya boleh mengandung huruf, angka, dan underscore
-- Case-sensitive (`nama` dan `Nama` berbeda)
+- Peka huruf besar/kecil (`nama` dan `Nama` berbeda)
 
 ```python
 # Valid

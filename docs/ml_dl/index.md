@@ -1,10 +1,10 @@
 # Machine Learning & Deep Learning
 
-Machine Learning (ML) adalah cabang kecerdasan buatan yang membuat komputer belajar pola dari data. Deep Learning (DL) adalah subset dari ML yang memakai jaringan saraf berlapis untuk memodelkan pola yang kompleks.
+Machine Learning (ML) adalah cabang kecerdasan buatan yang membuat komputer belajar pola dari data. Deep Learning (DL) adalah bagian dari ML yang menggunakan jaringan saraf berlapis untuk memodelkan pola kompleks.
 
 ## Apa itu ML & DL?
 
-ML dan DL digunakan untuk memecahkan berbagai masalah berbasis data, seperti:
+ML dan DL digunakan untuk menyelesaikan berbagai masalah berbasis data, seperti:
 
 - **Klasifikasi** - Memprediksi label kategori (misal: spam vs bukan spam)
 - **Regresi** - Memprediksi nilai kontinu (misal: harga rumah)
@@ -16,9 +16,9 @@ ML dan DL digunakan untuk memecahkan berbagai masalah berbasis data, seperti:
 
 - **Data dan fitur** - Representasi numerik dari informasi
 - **Model dan parameter** - Fungsi yang dipelajari dari data
-- **Loss function** - Mengukur kesalahan prediksi
-- **Optimisasi** - Meminimalkan loss (misal: gradient descent)
-- **Evaluasi** - Mengukur performa dan generalisasi
+- **Fungsi loss** - Mengukur kesalahan prediksi
+- **Optimisasi** - Meminimalkan loss (misalnya gradient descent)
+- **Evaluasi** - Mengukur kinerja dan generalisasi
 
 ## Matematika Machine Learning
 
@@ -32,10 +32,10 @@ di mana $x_i \in \mathbb{R}^d$ adalah vektor fitur dan $y_i$ adalah label atau n
 
 ### Model dan Prediksi
 
-Model memetakan input ke prediksi melalui parameter $w$ (weights) dan $b$ (bias):
+Model memetakan input ke prediksi melalui parameter $w$ (bobot) dan $b$ (bias). Secara umum, kita tulis parameter sebagai $\theta = (w, b)$:
 
 $$
-\hat{y} = f(x; w, b)
+\hat{y} = f(x; \theta)
 $$
 
 Untuk **regresi linear**, modelnya adalah:
@@ -44,15 +44,17 @@ $$
 \hat{y} = w^\top x + b = \sum_{j=1}^{d} w_j x_j + b
 $$
 
-Untuk **regresi logistik** (klasifikasi), kita menambahkan fungsi sigmoid:
+Untuk **regresi logistik** (klasifikasi biner), kita menambahkan fungsi sigmoid untuk memperoleh probabilitas:
 
 $$
-\hat{y} = \sigma(w^\top x + b) = \frac{1}{1 + e^{-(w^\top x + b)}}
+p(y=1 \mid x) = \sigma(w^\top x + b) = \frac{1}{1 + e^{-(w^\top x + b)}}
 $$
 
-### Loss Function
+Prediksi kelas biasanya diambil dengan ambang (threshold), misalnya kelas 1 jika probabilitas $\geq 0.5$.
 
-Loss function mengukur seberapa jauh prediksi dari nilai sebenarnya. Tujuan training adalah meminimalkan total loss pada seluruh data.
+### Fungsi Loss
+
+Fungsi loss mengukur seberapa jauh prediksi dari nilai sebenarnya. Tujuan training adalah meminimalkan total loss pada seluruh data.
 
 **Mean Squared Error (MSE)** untuk regresi:
 
@@ -63,13 +65,15 @@ $$
 **Cross-Entropy Loss** untuk klasifikasi biner:
 
 $$
-L_{\text{CE}} = -\frac{1}{n} \sum_{i=1}^{n} \left[ y_i \log(\hat{y}_i) + (1 - y_i) \log(1 - \hat{y}_i) \right]
+L_{\text{CE}} = -\frac{1}{n} \sum_{i=1}^{n} \left[ y_i \log(p_i) + (1 - y_i) \log(1 - p_i) \right]
 $$
+
+dengan $p_i = p(y=1 \mid x_i)$.
 
 **Hinge Loss** untuk Support Vector Machine (SVM):
 
 $$
-L_{\text{hinge}} = \frac{1}{n} \sum_{i=1}^{n} \max(0, 1 - y_i \cdot (w^\top x_i))
+L_{\text{hinge}} = \frac{1}{n} \sum_{i=1}^{n} \max(0, 1 - y_i \cdot (w^\top x_i + b))
 $$
 
 di mana $y_i \in \{-1, +1\}$.
@@ -86,19 +90,19 @@ di mana $\alpha \geq 0$ mengontrol kekuatan regularisasi. Semakin besar $\alpha$
 
 ### Gradient Descent
 
-Untuk meminimalkan loss, kita update parameter secara iteratif menggunakan gradient descent:
+Untuk meminimalkan loss, parameter diperbarui secara iteratif menggunakan gradient descent:
 
 $$
-w \leftarrow w - \eta \frac{\partial L}{\partial w}
+\theta \leftarrow \theta - \eta \nabla_{\theta} L
 $$
 
-di mana $\eta$ adalah **learning rate** yang mengontrol seberapa besar langkah update. Proses ini diulang hingga loss konvergen.
+di mana $\eta$ adalah **learning rate** yang mengontrol besar langkah pembaruan. Proses ini diulang hingga loss konvergen.
 
 ---
 
 ## Matematika Deep Learning
 
-Deep learning menggunakan **neural network** yang terdiri dari banyak layer. Setiap layer melakukan transformasi linear diikuti fungsi aktivasi non-linear.
+Deep learning menggunakan **neural network** yang terdiri atas banyak layer. Setiap layer melakukan transformasi linear yang diikuti fungsi aktivasi non-linear.
 
 ### Forward Propagation
 
@@ -119,7 +123,7 @@ $$
 \hat{y} = W^{(3)} a^{(2)} + b^{(3)}
 $$
 
-di mana $W^{(l)}$ adalah matriks bobot layer ke-$l$, $b^{(l)}$ adalah bias, dan $\sigma$ adalah fungsi aktivasi (misal ReLU, sigmoid, atau tanh).
+di mana $W^{(l)}$ adalah matriks bobot layer ke-$l$, $b^{(l)}$ adalah bias, dan $\sigma$ adalah fungsi aktivasi (misalnya ReLU, sigmoid, atau tanh).
 
 ### Fungsi Aktivasi
 
@@ -162,7 +166,7 @@ $$
 
 Dalam PyTorch, kita cukup memanggil `Q.backward()` dan gradien akan dihitung otomatis.
 
-### Training Loop
+### Loop Pelatihan
 
 Proses training neural network:
 
@@ -178,10 +182,10 @@ Selain gradient descent sederhana, ada beberapa optimizer yang lebih canggih:
 
 **SGD dengan Momentum:**
 $$
-v_t = \gamma v_{t-1} + \eta \nabla_\theta L
+v_t = \gamma v_{t-1} + (1-\gamma)\nabla_\theta L
 $$
 $$
-\theta \leftarrow \theta - v_t
+\theta \leftarrow \theta - \eta v_t
 $$
 
 **Adam** menggabungkan momentum dengan adaptive learning rate untuk konvergensi yang lebih cepat dan stabil.
@@ -203,7 +207,7 @@ Pustaka ML klasik dengan API yang konsisten dan mudah dipakai. Cocok untuk:
 Framework DL yang fleksibel dan populer untuk riset serta produksi. Cocok untuk:
 
 - Neural network dan deep learning
-- Eksperimen cepat dengan graph dinamis
+- Eksperimen cepat dengan computational graph dinamis
 - Training loop kustom
 
 ## Alur Pembelajaran
