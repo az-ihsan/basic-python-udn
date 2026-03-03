@@ -1,13 +1,13 @@
-# Itertools dan Kombinatorik untuk Probabilitas & Statistik
+# Itertools dan Kombinatorika untuk Probabilitas dan Statistika
 
-Modul `math` dan `itertools` sangat berguna untuk menghitung **banyaknya cara** dalam masalah probabilitas dan statistik:
+Modul `math` dan `itertools` sangat berguna untuk menghitung **banyaknya cara** pada masalah probabilitas dan statistika:
 
 - berapa banyak cara menyusun objek (permutasi),
 - berapa banyak cara memilih objek (kombinasi),
 - berapa besar ruang sampel percobaan (Cartesian product),
 - serta menghitung peluang dari ruang sampel tersebut.
 
-Di sini kita akan fokus pada fungsi-fungsi yang paling relevan untuk kuliah Probabilitas & Statistik.
+Di bab ini kita fokus pada fungsi-fungsi yang paling relevan untuk perkuliahan Probabilitas dan Statistika.
 
 ---
 
@@ -32,7 +32,7 @@ n = 4
 print(math.factorial(n))   # 24 cara
 ```
 
-Faktorial adalah blok bangunan utama untuk permutasi dan kombinasi.
+Faktorial adalah fondasi utama untuk permutasi dan kombinasi.
 
 ---
 
@@ -46,8 +46,18 @@ P(n, r) = \frac{n!}{(n - r)!}
 
 Di Python, kita bisa:
 
+- menggunakan `math.perm(n, r)` (Python 3.8+),
 - menggunakan rumus dengan `math.factorial`, atau
 - menghasilkan semua susunan dengan `itertools.permutations`.
+
+### Cara Praktis dengan `math.perm`
+
+```python
+import math
+
+print(math.perm(5, 2))  # 20
+print(math.perm(4, 4))  # 24
+```
 
 ### Rumus dengan `math.factorial`
 
@@ -73,8 +83,8 @@ for p in permutations(items, 2):
     print(p)
 
 # Hitung banyaknya permutasi 2 dari 3
-all_perm = list(permutations(items, 2))
-print("Jumlah permutasi:", len(all_perm))  # 6
+jumlah_perm = sum(1 for _ in permutations(items, 2))
+print("Jumlah permutasi:", jumlah_perm)  # 6
 ```
 
 Ini sesuai dengan rumus:
@@ -92,6 +102,17 @@ P(3, 2) = \frac{3!}{(3-2)!} = \frac{3!}{1!} = 6
 \[
 C(n, r) = \binom{n}{r} = \frac{n!}{r!(n - r)!}
 \]
+
+Di Python, pendekatan yang paling ringkas untuk menghitung banyaknya kombinasi adalah `math.comb(n, r)`.
+
+### Cara Praktis dengan `math.comb`
+
+```python
+import math
+
+print(math.comb(5, 2))  # 10
+print(math.comb(6, 3))  # 20
+```
 
 ### Rumus dengan `math.factorial`
 
@@ -116,8 +137,8 @@ print("Kombinasi 2 dari [A, B, C]:")
 for c in combinations(items, 2):
     print(c)
 
-all_comb = list(combinations(items, 2))
-print("Jumlah kombinasi:", len(all_comb))  # 3
+jumlah_comb = sum(1 for _ in combinations(items, 2))
+print("Jumlah kombinasi:", jumlah_comb)  # 3
 ```
 
 Di sini hanya ada 3 kombinasi:
@@ -145,14 +166,18 @@ from itertools import combinations_with_replacement
 
 rasa = ["vanila", "coklat", "stroberi"]
 
-print("Pilih 2 scoop es krim (boleh rasa yang sama):")
+print("Pilih 2 sendok es krim (boleh rasa yang sama):")
 for combo in combinations_with_replacement(rasa, 2):
     print(combo)
 ```
 
-Contoh di atas memodelkan situasi seperti “stars and bars” di kombinatorik (membagi `r` item identik ke `n` kategori).
+Contoh di atas memodelkan situasi seperti "stars and bars" dalam kombinatorika (membagi `r` item identik ke `n` kategori).
 
 ---
+
+:::{warning}
+Untuk `n` besar, hindari `list(...)` pada hasil `itertools` karena dapat menghabiskan memori. Gunakan iterator langsung atau hitung dengan rumus (`math.perm`, `math.comb`) jika hanya membutuhkan jumlahnya.
+:::
 
 ## Cartesian Product dan Ruang Sampel
 
@@ -187,7 +212,7 @@ Hasil:
 - `("T", "H")`
 - `("T", "T")`
 
-Sehingga peluang mendapatkan tepat satu kali `H` adalah:
+Sehingga peluang memperoleh tepat satu kali `H` adalah:
 
 \[
 P(\text{satu H}) = \frac{2}{4} = \frac{1}{2}
@@ -211,7 +236,7 @@ print("Banyaknya:", len(jumlah_7))
 print("Peluang:", len(jumlah_7) / len(ruang_sampel))
 ```
 
-Secara teori, memang ada 6 pasangan yang jumlahnya 7:
+Secara teori, ada 6 pasangan yang jumlahnya 7:
 
 - (1, 6), (2, 5), (3, 4), (4, 3), (5, 2), (6, 1)
 
@@ -227,7 +252,7 @@ P(\text{jumlah} = 7) = \frac{6}{36} = \frac{1}{6}
 
 ### Contoh 1: Memilih Panitia (Kombinasi)
 
-Misalkan ada 10 mahasiswa dan akan dipilih 3 orang sebagai panitia (tanpa peran khusus). Berapa banyak susunan panitia yang mungkin?
+Misalkan ada 10 mahasiswa dan akan dipilih 3 orang sebagai panitia (tanpa peran khusus). Berapa banyak kombinasi panitia yang mungkin?
 
 ```python
 import math
@@ -265,9 +290,9 @@ Di sini urutan kursi penting, sehingga kita memakai permutasi, bukan kombinasi.
 
 ## Ringkasan
 
-- Gunakan **`math.factorial`** untuk menghitung \(n!\) yang dipakai dalam rumus permutasi dan kombinasi.
+- Gunakan **`math.perm(n, r)`** dan **`math.comb(n, r)`** untuk menghitung jumlah permutasi/kombinasi secara langsung.
+- Gunakan **`math.factorial`** jika Anda sedang mempelajari turunan rumus secara manual.
 - Gunakan **`itertools.permutations`** ketika urutan penting (penyusunan).
 - Gunakan **`itertools.combinations`** ketika urutan tidak penting (pemilihan).
 - Gunakan **`itertools.combinations_with_replacement`** ketika pemilihan boleh mengulang elemen yang sama.
 - Gunakan **`itertools.product`** untuk membangun **ruang sampel** percobaan majemuk (Cartesian product), sehingga peluang bisa dihitung sebagai \(\text{jumlah kasus menguntungkan} / \text{jumlah semua kasus}\).
-

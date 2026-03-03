@@ -1,15 +1,15 @@
 # Transformers Dasar
 
-Hugging Face Transformers adalah pustaka yang menyediakan akses mudah ke ribuan model pre-trained untuk Natural Language Processing. Dengan Transformers, Anda dapat melakukan berbagai tugas NLP hanya dengan beberapa baris kode.
+Hugging Face Transformers adalah pustaka yang menyediakan akses mudah ke ribuan model pre-trained untuk Natural Language Processing (NLP). Dengan Transformers, Anda dapat menjalankan berbagai tugas NLP hanya dengan beberapa baris kode.
 
 ## Apa itu Transformers?
 
-Transformers adalah arsitektur neural network yang menjadi dasar model-model modern seperti BERT, GPT, dan T5. Pustaka Hugging Face Transformers memudahkan penggunaan model-model ini tanpa perlu melatih dari awal.
+Transformers adalah arsitektur neural network yang menjadi dasar model modern seperti BERT, GPT, dan T5. Pustaka Hugging Face Transformers memudahkan penggunaan model-model ini tanpa melatih dari awal.
 
 **Keunggulan Transformers:**
 
 - **Pre-trained models** - Model sudah dilatih pada data besar, tinggal pakai
-- **State-of-the-art** - Performa terbaik untuk banyak tugas NLP
+- **Mutakhir (state-of-the-art)** - Performa terbaik untuk banyak tugas NLP
 - **Mudah digunakan** - API `pipeline` yang sangat sederhana
 - **Banyak pilihan** - Ribuan model untuk berbagai bahasa dan tugas
 - **Komunitas besar** - Hugging Face Hub dengan model dari seluruh dunia
@@ -17,17 +17,17 @@ Transformers adalah arsitektur neural network yang menjadi dasar model-model mod
 ## Instalasi
 
 ```bash
-pip install transformers
+python -m pip install "transformers[torch]"
 ```
 
 Atau jika menggunakan uv:
 
 ```bash
-uv add transformers
+uv add transformers torch
 ```
 
 :::{note}
-Model akan diunduh secara otomatis saat pertama kali digunakan dan disimpan di cache lokal (`~/.cache/huggingface/`).
+Contoh pada bab ini menggunakan backend PyTorch. Model akan diunduh otomatis saat pertama kali dipakai dan disimpan di cache lokal (`~/.cache/huggingface/`).
 :::
 
 ## Konsep Utama
@@ -40,7 +40,10 @@ Model akan diunduh secara otomatis saat pertama kali digunakan dan disimpan di c
 from transformers import pipeline
 
 # Buat pipeline untuk analisis sentimen
-classifier = pipeline("sentiment-analysis")
+classifier = pipeline(
+    "sentiment-analysis",
+    model="distilbert-base-uncased-finetuned-sst-2-english",
+)
 
 # Gunakan pipeline
 result = classifier("I love learning about AI!")
@@ -50,7 +53,7 @@ print(result)
 
 ### 2. Tokenizer
 
-Tokenizer mengubah teks menjadi format yang dipahami model:
+Tokenizer mengubah teks menjadi representasi token yang dipahami model:
 
 ```python
 from transformers import AutoTokenizer
@@ -63,7 +66,7 @@ print(tokens)
 # {'input_ids': [101, 7592, 1010, 2129, 2024, 2017, 1029, 102], 
 #  'attention_mask': [1, 1, 1, 1, 1, 1, 1, 1]}
 
-# Decode kembali ke teks
+# Dekode kembali ke teks
 text = tokenizer.decode(tokens["input_ids"])
 print(text)
 # [CLS] hello, how are you? [SEP]
@@ -71,7 +74,7 @@ print(text)
 
 ### 3. Model
 
-Model melakukan prediksi berdasarkan input yang sudah di-tokenisasi:
+Model melakukan prediksi berdasarkan input yang sudah ditokenisasi:
 
 ```python
 from transformers import AutoModelForSequenceClassification
@@ -98,7 +101,10 @@ with torch.no_grad():
 ```python
 from transformers import pipeline
 
-classifier = pipeline("sentiment-analysis")
+classifier = pipeline(
+    "sentiment-analysis",
+    model="distilbert-base-uncased-finetuned-sst-2-english",
+)
 
 texts = [
     "This movie is amazing!",
@@ -224,7 +230,7 @@ print(f"German: {result[0]['translation_text']}")
 
 Untuk bahasa Indonesia, Anda dapat menggunakan model multibahasa:
 
-### Sentiment Analysis Bahasa Indonesia
+### Analisis Sentimen Bahasa Indonesia
 
 ```python
 from transformers import pipeline
@@ -243,8 +249,10 @@ texts_id = [
 
 for text in texts_id:
     result = classifier(text)[0]
+    # Label model ini berupa bintang, misalnya "1 star" s.d. "5 stars"
+    jumlah_bintang = int(result["label"].split()[0])
     print(f"{text}")
-    print(f"  → {result['label']} ({result['score']:.2%})\n")
+    print(f"  → {jumlah_bintang} bintang ({result['score']:.2%})\n")
 ```
 
 ### NER Bahasa Indonesia
@@ -279,9 +287,21 @@ Jakarta              → LOC
 1. **Mulai dengan `pipeline`** - Cara termudah untuk mencoba berbagai tugas NLP
 2. **Pilih model yang tepat** - Kunjungi [Hugging Face Hub](https://huggingface.co/models) untuk mencari model
 3. **Perhatikan ukuran model** - Model besar lebih akurat tapi membutuhkan lebih banyak memori
-4. **Gunakan GPU jika ada** - Transformers otomatis menggunakan GPU jika tersedia
+4. **Atur perangkat secara eksplisit** - Gunakan `device=0` untuk GPU CUDA pertama atau `device=-1` untuk CPU
 5. **Cache model** - Model diunduh sekali dan disimpan di cache untuk penggunaan berikutnya
 :::
+
+Contoh pengaturan perangkat:
+
+```python
+from transformers import pipeline
+
+# Gunakan GPU CUDA pertama
+classifier_gpu = pipeline("sentiment-analysis", device=0)
+
+# Paksa ke CPU
+classifier_cpu = pipeline("sentiment-analysis", device=-1)
+```
 
 ## Daftar Pipeline yang Tersedia
 
@@ -330,7 +350,7 @@ sports          → 0.60%
 | Aspek | spaCy | Transformers |
 |-------|-------|--------------|
 | Kecepatan | Sangat cepat | Lebih lambat |
-| Akurasi | Baik | State-of-the-art |
+| Akurasi | Baik | Mutakhir (state-of-the-art) |
 | Ukuran model | Kecil (MB) | Besar (100MB-GB) |
 | GPU | Opsional | Disarankan |
 | Kasus penggunaan | Produksi, real-time | Akurasi maksimal |

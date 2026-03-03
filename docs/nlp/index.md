@@ -4,7 +4,7 @@ Natural Language Processing (NLP) adalah cabang kecerdasan buatan yang berfokus 
 
 ## Apa itu NLP?
 
-NLP menggabungkan linguistik komputasional dengan machine learning dan deep learning untuk memproses bahasa manusia. Beberapa tugas umum dalam NLP meliputi:
+NLP menggabungkan linguistik komputasional dengan machine learning dan deep learning untuk memproses bahasa manusia. Beberapa tugas umum NLP meliputi:
 
 - **Tokenisasi** - Memecah teks menjadi unit-unit kecil (token)
 - **Part-of-Speech Tagging** - Menandai kategori gramatikal setiap kata
@@ -17,7 +17,7 @@ NLP menggabungkan linguistik komputasional dengan machine learning dan deep lear
 
 ## Pustaka NLP
 
-Dalam materi ini, kita akan mempelajari dua pustaka NLP populer:
+Dalam materi ini, kita mempelajari dua pustaka NLP populer:
 
 ### spaCy
 
@@ -28,7 +28,7 @@ Pustaka NLP yang cepat dan efisien untuk penggunaan produksi. Cocok untuk:
 
 ### Hugging Face Transformers
 
-Pustaka yang menyediakan akses ke model-model state-of-the-art. Cocok untuk:
+Pustaka yang menyediakan akses ke model-model mutakhir (state-of-the-art). Cocok untuk:
 - Tugas yang membutuhkan akurasi maksimal
 - Menggunakan model pre-trained canggih (BERT, GPT, dll)
 - Eksperimen dan penelitian
@@ -45,10 +45,10 @@ Pustaka yang menyediakan akses ke model-model state-of-the-art. Cocok untuk:
           ▼                           ▼
 ┌─────────────────┐         ┌─────────────────┐
 │     spaCy       │         │  Transformers   │
-│  (Cepat, Prod)  │         │ (State-of-art)  │
+│  (Cepat, Prod)  │         │   (Mutakhir)    │
 └─────────────────┘         └─────────────────┘
 ```
 
 ## Langkah Selanjutnya
 
-Mulai dengan [spaCy](../spacy/index.md) untuk mempelajari dasar-dasar NLP dengan pustaka yang cepat dan efisien, atau langsung ke [Transformers](../transformers/index.md) jika Anda ingin menggunakan model-model canggih.
+Mulai dengan [spaCy](../spacy/index.md) untuk mempelajari dasar-dasar NLP dengan pustaka yang cepat dan efisien, atau lanjutkan ke [Transformers](../transformers/index.md) jika Anda ingin menggunakan model-model yang lebih canggih.

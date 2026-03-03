@@ -1,8 +1,8 @@
 # Basic Python UDN
 
-**Sebagai bahan pembantu pembelajaran Kecerdasan Buatan Universitas Darunnajah (UDN)**
+**Sebagai bahan pendukung pembelajaran Kecerdasan Buatan Universitas Darunnajah (UDN)**
 
-Selamat datang di materi pembelajaran Basic Python UDN! Dokumentasi ini dirancang untuk membantu mahasiswa memahami dasar-dasar pemrograman Python dan pustaka-pustaka ilmiah yang umum digunakan dalam bidang Kecerdasan Buatan dan Data Science.
+Selamat datang di materi pembelajaran Basic Python UDN. Dokumentasi ini dirancang untuk membantu mahasiswa memahami dasar-dasar pemrograman Python dan pustaka ilmiah yang umum digunakan dalam bidang kecerdasan buatan serta ilmu data.
 
 ---
 
