@@ -38,6 +38,7 @@ python script.py
 tipe_data
 kontrol_alur
 fungsi
+itertools_combinatorik
 modul_dan_paket
 file_io
 error_handling

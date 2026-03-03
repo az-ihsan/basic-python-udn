@@ -221,31 +221,11 @@ print(p.x, p.y)  # 10 20
 
 ### itertools
 
-```python
-from itertools import count, cycle, repeat, chain, combinations, permutations
+Modul `itertools` menyediakan fungsi-fungsi untuk bekerja dengan iterator secara efisien, termasuk operasi kombinatorik seperti permutasi, kombinasi, dan Cartesian product.
 
-# combinations
-items = ["A", "B", "C"]
-for combo in combinations(items, 2):
-    print(combo)
-# ('A', 'B')
-# ('A', 'C')
-# ('B', 'C')
+Untuk materi lengkap tentang permutasi, kombinasi, faktorial, Cartesian product, dan aplikasinya dalam probabilitas dan statistik, lihat:
 
-# permutations
-for perm in permutations(items, 2):
-    print(perm)
-# ('A', 'B')
-# ('A', 'C')
-# ('B', 'A')
-# ... dst
-
-# chain - menggabungkan iterables
-list1 = [1, 2, 3]
-list2 = [4, 5, 6]
-for item in chain(list1, list2):
-    print(item, end=" ")  # 1 2 3 4 5 6
-```
+- [Itertools dan Kombinatorik](itertools_combinatorik.md)
 
 ## Paket
 
